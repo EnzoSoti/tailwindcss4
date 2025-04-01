@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
+  const [sidebarExpanded, setSidebarExpanded] = useState(true);
 
   // Function to render the appropriate component based on currentPage
   const renderPage = () => {
@@ -36,10 +37,17 @@ const App = () => {
 
   return (
     <div className="flex bg-[#121212] text-[#E0E0E0] min-h-screen">
-      <Sidebar setCurrentPage={setCurrentPage} />
-      <main className="flex-1 p-6">
+      <Sidebar 
+        setCurrentPage={setCurrentPage} 
+        expanded={sidebarExpanded}
+        setExpanded={setSidebarExpanded} 
+      />
+      <div 
+        className={`flex-1 transition-all duration-300 ${sidebarExpanded ? 'ml-64' : 'ml-16'}`}
+        style={{ marginLeft: sidebarExpanded ? '16rem' : '4rem' }}
+      >
         {renderPage()}
-      </main>
+      </div>
     </div>
   );
 };

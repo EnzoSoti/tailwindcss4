@@ -1,11 +1,8 @@
-// Sidebar.jsx
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, LayoutDashboard, UserCircle,Code, User, MessageSquare, FolderKanban, Settings } from 'lucide-react';
+import React from 'react';
+import { ChevronLeft, ChevronRight, LayoutDashboard, UserCircle, Code, User, MessageSquare, FolderKanban, Settings } from 'lucide-react';
 import ProfilePic from '../assets/mw.jpg';
 
-const Sidebar = ({ setCurrentPage }) => {
-  const [expanded, setExpanded] = useState(true);
-  
+const Sidebar = ({ setCurrentPage, expanded, setExpanded }) => {
   const toggleSidebar = () => {
     setExpanded(!expanded);
   };
@@ -21,7 +18,7 @@ const Sidebar = ({ setCurrentPage }) => {
   ];
 
   return (
-    <aside className="h-screen">
+    <aside className="fixed h-screen z-50">
       <nav className={`h-full flex flex-col bg-[#121212] border-r border-[#444444] shadow-md transition-all duration-300 ${expanded ? 'w-64' : 'w-16'}`}>
         <div className="p-4 flex justify-between items-center">
           {expanded && <span className="text-xl font-semibold text-[#E0E0E0]">Menu</span>}
