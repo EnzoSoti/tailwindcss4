@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Home, Settings, User, HelpCircle } from 'lucide-react';
 import ProfilePic from '../assets/mw.jpg';
 
-const Sidebar = () => {
+const Sidebar = ({ setCurrentPage }) => {
   const [expanded, setExpanded] = useState(true);
   
   const toggleSidebar = () => {
@@ -11,10 +11,10 @@ const Sidebar = () => {
   };
   
   const menuItems = [
-    { id: 1, icon: <Home />, text: "Dashboard", path: "/" },
-    { id: 2, icon: <User />, text: "Profile", path: "/profile" },
-    { id: 3, icon: <Settings />, text: "Settings", path: "/settings" },
-    { id: 4, icon: <HelpCircle />, text: "Help", path: "/help" }
+    { id: 1, icon: <Home />, text: "Dashboard", pageId: "dashboard" },
+    { id: 2, icon: <User />, text: "Profile", pageId: "profile" },
+    { id: 3, icon: <Settings />, text: "Settings", pageId: "settings" },
+    { id: 4, icon: <HelpCircle />, text: "Help", pageId: "help" }
   ];
 
   return (
@@ -34,13 +34,13 @@ const Sidebar = () => {
           <ul className="flex flex-col gap-2">
             {menuItems.map(item => (
               <li key={item.id}>
-                <a 
-                  href={item.path} 
-                  className="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors"
+                <button 
+                  onClick={() => setCurrentPage(item.pageId)}
+                  className="flex items-center w-full p-3 rounded-lg hover:bg-gray-100 transition-colors text-left"
                 >
                   <span className="text-gray-500">{item.icon}</span>
                   {expanded && <span className="ml-3">{item.text}</span>}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
