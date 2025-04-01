@@ -4,7 +4,10 @@ import Sidebar from './components/sidebar';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
-import Help from './pages/Help';
+import Project from './pages/Project';
+import Aboutme from './pages/aboutme';
+import Skills from './pages/skills'
+import Contact from './pages/Contact';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -18,15 +21,21 @@ const App = () => {
         return <Profile />;
       case 'settings':
         return <Settings />;
-      case 'help':
-        return <Help />;
+      case 'project':
+        return <Project />;
+      case 'aboutme':
+        return <Aboutme />
+      case 'skills':
+        return <Skills />
+      case 'contact':
+        return <Contact />
       default:
         return <Dashboard />;
     }
   };
 
   return (
-    <div className="flex">
+    <div className="flex bg-[#121212] text-[#E0E0E0] min-h-screen">
       <Sidebar setCurrentPage={setCurrentPage} />
       <main className="flex-1 p-6">
         {renderPage()}
