@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useState } from 'react';
-import Sidebar from './components/sidebar';
+import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
